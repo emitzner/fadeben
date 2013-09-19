@@ -1,0 +1,82 @@
+
+.table {
+    display: table;
+    border: $MAIN-COLOR 1px solid;
+    border-collapse: collapse;
+    @include box-sizing(border-box);
+
+    div {
+        display: table-row;
+        /** This is a td. **/
+        &.even {
+            background-color: #eee;
+        }
+            
+        &.odd {
+            background-color: #d9d9d9;
+        }
+
+        &.header {
+            background-color: $MAIN-COLOR;
+            color: $AUX-COLOR;
+            font-weight: bold;
+
+            a {
+                color: $AUX-COLOR;
+                font-weight: bold;
+            }
+        }
+
+        div {
+            display: table-cell;
+            border: $MAIN-COLOR 1px solid;
+            padding: 4px 20px;
+            text-align: center;
+
+            a {
+                color: $MAIN-COLOR;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            input {
+                width: 75px;
+            }
+
+            &.drop-down-container {
+                /* position: relative; */
+                &.active {
+                    background-color: #fff;
+                    border-bottom: #fff 1px solid;
+
+                    a {
+                        color: $MAIN-COLOR;
+                    }
+                }
+            }
+
+            .drop-down-menu {
+                display: none;
+	        position: absolute;
+                margin-left: -21px; /* counter act padding */
+                margin-top: 4px;
+                border: $MAIN-COLOR 1px solid;
+                border-top: 0px;
+                z-index: 2;
+                background-color: #fff;
+                min-width: 150px;
+	    
+                ul {
+                    li { margin-bottom: 3px; }
+                }
+	        a {
+		    color: $MAIN-COLOR;
+	        }
+            }
+
+        }
+    }
+}

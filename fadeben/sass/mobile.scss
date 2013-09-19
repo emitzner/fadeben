@@ -1,0 +1,77 @@
+@import "compass/css3";
+#header {
+
+    /* div ul li { */
+    /* 	height: 50px; */
+    /* } */
+}
+
+#week-standings-count {
+    width: 100%;
+
+    tr td {
+	text-align: center;
+    }
+}
+
+.spaced-table {
+    width: 100%;
+
+    tr td {
+	text-align: center;
+    }
+}
+.prediction {
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+
+    .name { 
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px; 
+	text-shadow: none;
+    }
+
+}
+
+.win { background-color: #a8baae; }
+.loss { background-color: #D29D93; }
+
+/** message helpers **/
+#flash-messages {
+    list-style-type: none;
+    margin: 0px 0px 10px;
+    padding: 0px;
+
+    li.msg {
+        padding: 10px;
+        border: #ddd 2px solid;
+        color: #205791;
+        background-color: #efefef;
+        @include border-radius(5px);
+
+        &.warning {
+            background-color: #fbe3e4;
+            border-color: #fbc2c4;
+            color: #8a1f11;
+        }
+
+        &.error {
+            background-color: #fbe3e4;
+            border-color: #fbc2c4;
+            color: #8a1f11;
+        }
+
+        &.success {
+            background-color: #e6efc2;
+            border-color: #c6d880;
+            color: #264409;
+        }
+    }
+}

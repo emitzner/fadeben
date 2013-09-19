@@ -1,0 +1,91 @@
+/* line 2, ../../sass/mobile.scss */
+#header {
+  /* div ul li { */
+  /* 	height: 50px; */
+  /* } */
+}
+
+/* line 9, ../../sass/mobile.scss */
+#week-standings-count {
+  width: 100%;
+}
+/* line 12, ../../sass/mobile.scss */
+#week-standings-count tr td {
+  text-align: center;
+}
+
+/* line 17, ../../sass/mobile.scss */
+.spaced-table {
+  width: 100%;
+}
+/* line 20, ../../sass/mobile.scss */
+.spaced-table tr td {
+  text-align: center;
+}
+
+/* line 24, ../../sass/mobile.scss */
+.prediction {
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+}
+/* line 31, ../../sass/mobile.scss */
+.prediction .name {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: 12px;
+  line-height: 12px;
+  font-size: 12px;
+  text-shadow: none;
+}
+
+/* line 43, ../../sass/mobile.scss */
+.win {
+  background-color: #a8baae;
+}
+
+/* line 44, ../../sass/mobile.scss */
+.loss {
+  background-color: #D29D93;
+}
+
+/** message helpers **/
+/* line 47, ../../sass/mobile.scss */
+#flash-messages {
+  list-style-type: none;
+  margin: 0px 0px 10px;
+  padding: 0px;
+}
+/* line 52, ../../sass/mobile.scss */
+#flash-messages li.msg {
+  padding: 10px;
+  border: #ddd 2px solid;
+  color: #205791;
+  background-color: #efefef;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 59, ../../sass/mobile.scss */
+#flash-messages li.msg.warning {
+  background-color: #fbe3e4;
+  border-color: #fbc2c4;
+  color: #8a1f11;
+}
+/* line 65, ../../sass/mobile.scss */
+#flash-messages li.msg.error {
+  background-color: #fbe3e4;
+  border-color: #fbc2c4;
+  color: #8a1f11;
+}
+/* line 71, ../../sass/mobile.scss */
+#flash-messages li.msg.success {
+  background-color: #e6efc2;
+  border-color: #c6d880;
+  color: #264409;
+}

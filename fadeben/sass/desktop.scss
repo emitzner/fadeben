@@ -1,0 +1,331 @@
+/* @import "variables"; */
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+
+$MAIN-COLOR: #324759;
+$AUX-COLOR: #FFFFFF;
+$WIN-COLOR: #A8BAAE;
+$LOSS-COLOR: #D29D93;
+$PUSH-COLOR: #999999;
+
+@import "buttons";
+
+body {
+    margin: 0px;
+    text-align: center;
+    background-color: #bdbec2;
+    font-family: "Lucida Sans", "Century Gothic", "Arial", "sans-serif";
+    font-size: 14px;
+}
+
+a {
+    color: $MAIN-COLOR;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#page {
+    width: 1024px;
+    margin: 0px auto;
+    text-align: left;
+    background-color: #fff;
+    overflow: hidden;
+    @include box-shadow(#333 0 0 25px, #999 0 0 0px 1px inset);
+}
+
+#header {
+    overflow: hidden;
+    height: 50px;
+    background-color: $MAIN-COLOR;
+    color: #efefef;
+}
+
+#logo {
+    margin: 0px; padding:0px;
+    float: left;
+    line-height: 50px;
+    margin-left: 15px;
+    font-size: 22px;
+    a {
+        color: $AUX-COLOR;
+        text-decoration: none;
+    }
+}
+
+#navigation {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    float: right;
+    display: block;
+    line-height: 50px;
+
+    li {
+	float: left;
+	margin-left: 15px;
+
+	a {
+	    padding: 0 15px;
+	    color: $AUX-COLOR;
+	    text-decoration: none;
+	    height: 100%;
+	    display: block;
+
+	    &:hover {
+		background-color: $AUX-COLOR;
+		color: $MAIN-COLOR;
+	    }
+	}
+    }
+
+}
+
+#footer {
+    height: 35px;
+    overflow: hidden;
+    line-height: 35px;
+    padding-right: 15px;
+    font-size: 14px;
+
+    ul {
+	list-style-type: none;
+	margin: 0px;
+
+	li {
+	    float: left;
+	    margin-left: 15px;
+
+	    a {
+		color: $MAIN-COLOR;
+
+		&:hover {
+		    text-decoration: none;
+		}
+	    }
+	}
+    }
+}
+
+/** message helpers **/
+#flash-messages {
+    margin: 15px;
+
+    li.msg {
+        
+        padding: 10px;
+        margin-bottom: 15px;
+        border: #ddd 2px solid;
+        color: #205791;
+        background-color: #efefef;
+        @include border-radius(5px);
+
+        &.warning {
+            background-color: #fbe3e4;
+            border-color: #fbc2c4;
+            color: #8a1f11;
+        }
+
+        &.error {
+            background-color: #fbe3e4;
+            border-color: #fbc2c4;
+            color: #8a1f11;
+        }
+
+        &.success {
+            background-color: #e6efc2;
+            border-color: #c6d880;
+            color: #264409;
+        }
+    }
+}
+
+.left {
+    float: left;
+    overflow: hidden;
+}
+
+.right {
+    float: right;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 120px;
+    margin-right: 4px;
+    /* background-color: #efefef; */
+
+    h3 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 5px;
+    }
+
+    h3:first-child {
+	margin-top: 0px;
+    }
+
+    h2 {
+	font-size: 18px;
+    }
+
+    ul {
+	margin: 0px 0px 0px 10px;
+	padding: 0px;
+	list-style-type: none;
+	font-height: 14px;
+
+	li {
+	    margin: 2px 0px;
+	}
+    }
+
+}
+
+.sidebar-pad {
+    margin-left: 124px;
+}
+
+input {
+    border: #000 1px solid;
+    padding: 2px;
+}
+
+#content_wrapper {
+    overflow: hidden;
+}
+
+.main-content {
+    margin: 15px;
+    overflow: hidden;
+}
+
+.content h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.win {
+    background-color: $WIN-COLOR;
+}
+
+.loss {
+    background-color: $LOSS-COLOR;
+}
+
+.tie, .push {
+    background-color: $PUSH-COLOR;
+}
+
+.completed {
+    color: #999;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.choose-team {
+    width: 500px;
+    margin-bottom: 30px !important;
+
+    .selector {
+	width: 125px;
+    }
+
+    .team {
+	width: 300px;
+    }
+
+    .spread {
+	width: 75px;
+    }
+}
+
+@import "common/display_table";
+@import "common/div_table";
+@import "common/data_table";
+
+/* These are all bad, and should be rewritten somewhere else,
+or made into compass modules for other parts to reuse */
+#season-standings-table {
+    @extend .data-table;
+    width: 970px;
+
+    .cell {
+	width: 90px;
+    }
+}
+
+.week-standings-table {
+    @extend .data-table;
+
+     .cell {
+	width: 98px;
+	
+	.drop-down-menu {
+	    width: 250px;
+	}
+    }
+
+    .cell:first-child {
+	width: 72px;
+    }
+}
+
+#team-schedule {
+    @extend .data-table;
+    width: 840px;
+    margin: 15px auto;
+    .cell {
+	width: 140px;
+
+	&.colspan-5 {
+	    width: 700px;
+	}
+    }
+}
+
+#week-schedule {
+    @extend .data-table;
+    width: 700px;
+    margin: 15px auto;
+    .cell {
+	width: 140px;
+    }
+}
+
+#overlay-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: visible;
+    /* background-color: #efefef; */
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    div.shadow {
+	background-color: #999;
+	width: 100%;
+	height: 100%;
+	opacity: .5;
+    }
+    div.content { 
+	background-color: #fff; 
+	margin: 100px auto;
+	width: 700px;
+	opacity: 1;
+	min-height: 400px;
+	box-shadow: 5px;
+	@include box-shadow(#333 0 0 25px, #999 0 0 0px 1px inset);
+    }
+}
+
+@import "pages/change_password";

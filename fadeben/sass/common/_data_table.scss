@@ -1,0 +1,53 @@
+
+table.data {
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+
+    @include box-sizing(border-box);
+
+    tr {
+
+        th {
+            background-color: $MAIN-COLOR;
+            color: $AUX-COLOR;
+            font-weight: bold;
+            border: $MAIN-COLOR 1px solid;
+
+            &.blank {
+                border: 0px;
+                background-color: #fff;
+            }
+        }
+        td {
+            border: $MAIN-COLOR 1px solid;
+
+            &.loss {
+                background-color: $LOSS-COLOR !important;
+            }
+
+            &.win {
+                background-color: $WIN-COLOR !important;
+            }
+
+            &.tie, &.push {
+                background-color: $PUSH-COLOR !important;
+            }
+        }
+
+        th, td {
+            padding: 4px 20px;
+            text-align: center;
+        }
+
+        &.even td {
+            background-color: #d9d9d9;
+        }
+
+        &.odd td {
+            background-color: #eee;
+        }
+    }
+}
+
+    

@@ -1,0 +1,756 @@
+/* @import "variables"; */
+/* line 17, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 30, ../../sass/_buttons.scss */
+button.clean-gray {
+  /* @include linear-gradient(top, #eee, #ccc); */
+  /* @include background(linear-gradient(top, #eee, #CCC)); */
+  background-color: #324759;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  border-radius: 3px;
+  color: white;
+  font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  padding: 8px 0;
+  text-align: center;
+  /* text-shadow: 0 1px 0 #eee; */
+  width: 150px;
+}
+/* line 15, ../../sass/_buttons.scss */
+button.clean-gray:hover {
+  /* @include linear-gradient(top, #ddd, #bbb); */
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  /* text-shadow: 0 1px 0 #ddd; */
+}
+/* line 23, ../../sass/_buttons.scss */
+button.clean-gray:active {
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #888;
+  -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+  -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+  box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+}
+
+/* line 34, ../../sass/_buttons.scss */
+input[type='submit'] {
+  /* @include linear-gradient(top, #eee, #ccc); */
+  /* @include background(linear-gradient(top, #eee, #CCC)); */
+  background-color: #324759;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  border-radius: 3px;
+  color: white;
+  font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  padding: 8px 0;
+  text-align: center;
+  /* text-shadow: 0 1px 0 #eee; */
+  width: 150px;
+}
+/* line 15, ../../sass/_buttons.scss */
+input[type='submit']:hover {
+  /* @include linear-gradient(top, #ddd, #bbb); */
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  /* text-shadow: 0 1px 0 #ddd; */
+}
+/* line 23, ../../sass/_buttons.scss */
+input[type='submit']:active {
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #888;
+  -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+  -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+  box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+}
+
+/* line 14, ../../sass/desktop.scss */
+body {
+  margin: 0px;
+  text-align: center;
+  background-color: #bdbec2;
+  font-family: "Lucida Sans", "Century Gothic", "Arial", "sans-serif";
+  font-size: 14px;
+}
+
+/* line 22, ../../sass/desktop.scss */
+a {
+  color: #324759;
+}
+/* line 25, ../../sass/desktop.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 30, ../../sass/desktop.scss */
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 35, ../../sass/desktop.scss */
+#page {
+  width: 1024px;
+  margin: 0px auto;
+  text-align: left;
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+  -moz-box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+  box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+}
+
+/* line 44, ../../sass/desktop.scss */
+#header {
+  overflow: hidden;
+  height: 50px;
+  background-color: #324759;
+  color: #efefef;
+}
+
+/* line 51, ../../sass/desktop.scss */
+#logo {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  line-height: 50px;
+  margin-left: 15px;
+  font-size: 22px;
+}
+/* line 57, ../../sass/desktop.scss */
+#logo a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 63, ../../sass/desktop.scss */
+#navigation {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  float: right;
+  display: block;
+  line-height: 50px;
+}
+/* line 71, ../../sass/desktop.scss */
+#navigation li {
+  float: left;
+  margin-left: 15px;
+}
+/* line 75, ../../sass/desktop.scss */
+#navigation li a {
+  padding: 0 15px;
+  color: white;
+  text-decoration: none;
+  height: 100%;
+  display: block;
+}
+/* line 82, ../../sass/desktop.scss */
+#navigation li a:hover {
+  background-color: white;
+  color: #324759;
+}
+
+/* line 91, ../../sass/desktop.scss */
+#footer {
+  height: 35px;
+  overflow: hidden;
+  line-height: 35px;
+  padding-right: 15px;
+  font-size: 14px;
+}
+/* line 98, ../../sass/desktop.scss */
+#footer ul {
+  list-style-type: none;
+  margin: 0px;
+}
+/* line 102, ../../sass/desktop.scss */
+#footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+/* line 106, ../../sass/desktop.scss */
+#footer ul li a {
+  color: #324759;
+}
+/* line 109, ../../sass/desktop.scss */
+#footer ul li a:hover {
+  text-decoration: none;
+}
+
+/** message helpers **/
+/* line 118, ../../sass/desktop.scss */
+#flash-messages {
+  margin: 15px;
+}
+/* line 121, ../../sass/desktop.scss */
+#flash-messages li.msg {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: #ddd 2px solid;
+  color: #205791;
+  background-color: #efefef;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 130, ../../sass/desktop.scss */
+#flash-messages li.msg.warning {
+  background-color: #fbe3e4;
+  border-color: #fbc2c4;
+  color: #8a1f11;
+}
+/* line 136, ../../sass/desktop.scss */
+#flash-messages li.msg.error {
+  background-color: #fbe3e4;
+  border-color: #fbc2c4;
+  color: #8a1f11;
+}
+/* line 142, ../../sass/desktop.scss */
+#flash-messages li.msg.success {
+  background-color: #e6efc2;
+  border-color: #c6d880;
+  color: #264409;
+}
+
+/* line 150, ../../sass/desktop.scss */
+.left {
+  float: left;
+  overflow: hidden;
+}
+
+/* line 155, ../../sass/desktop.scss */
+.right {
+  float: right;
+  overflow: hidden;
+}
+
+/* line 160, ../../sass/desktop.scss */
+.sidebar {
+  width: 120px;
+  margin-right: 4px;
+  /* background-color: #efefef; */
+}
+/* line 165, ../../sass/desktop.scss */
+.sidebar h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+/* line 172, ../../sass/desktop.scss */
+.sidebar h3:first-child {
+  margin-top: 0px;
+}
+/* line 176, ../../sass/desktop.scss */
+.sidebar h2 {
+  font-size: 18px;
+}
+/* line 180, ../../sass/desktop.scss */
+.sidebar ul {
+  margin: 0px 0px 0px 10px;
+  padding: 0px;
+  list-style-type: none;
+  font-height: 14px;
+}
+/* line 186, ../../sass/desktop.scss */
+.sidebar ul li {
+  margin: 2px 0px;
+}
+
+/* line 193, ../../sass/desktop.scss */
+.sidebar-pad {
+  margin-left: 124px;
+}
+
+/* line 197, ../../sass/desktop.scss */
+input {
+  border: #000 1px solid;
+  padding: 2px;
+}
+
+/* line 202, ../../sass/desktop.scss */
+#content_wrapper {
+  overflow: hidden;
+}
+
+/* line 206, ../../sass/desktop.scss */
+.main-content {
+  margin: 15px;
+  overflow: hidden;
+}
+
+/* line 211, ../../sass/desktop.scss */
+.content h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 216, ../../sass/desktop.scss */
+.win {
+  background-color: #a8baae;
+}
+
+/* line 220, ../../sass/desktop.scss */
+.loss {
+  background-color: #d29d93;
+}
+
+/* line 224, ../../sass/desktop.scss */
+.tie, .push {
+  background-color: #999999;
+}
+
+/* line 228, ../../sass/desktop.scss */
+.completed {
+  color: #999;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* line 234, ../../sass/desktop.scss */
+.choose-team {
+  width: 500px;
+  margin-bottom: 30px !important;
+}
+/* line 238, ../../sass/desktop.scss */
+.choose-team .selector {
+  width: 125px;
+}
+/* line 242, ../../sass/desktop.scss */
+.choose-team .team {
+  width: 300px;
+}
+/* line 246, ../../sass/desktop.scss */
+.choose-team .spread {
+  width: 75px;
+}
+
+/* line 1, ../../sass/common/_display_table.scss */
+.data-table, #season-standings-table, .week-standings-table, #team-schedule, #week-schedule {
+  display: table;
+  border-right: #324759 1px solid;
+  margin-top: 15px;
+}
+/* line 6, ../../sass/common/_display_table.scss */
+.data-table div.odd, #season-standings-table div.odd, .week-standings-table div.odd, #team-schedule div.odd, #week-schedule div.odd {
+  background-color: #efefef;
+}
+/* line 10, ../../sass/common/_display_table.scss */
+.data-table .cell, #season-standings-table .cell, .week-standings-table .cell, #team-schedule .cell, #week-schedule .cell {
+  display: table-cell;
+  border-color: #324759;
+  border-style: solid;
+  border-width: 0 0 1px 1px;
+  text-align: center;
+  line-height: 24px;
+  height: 24px;
+  position: relative;
+}
+/* line 20, ../../sass/common/_display_table.scss */
+.data-table .cell .drop-down-menu, #season-standings-table .cell .drop-down-menu, .week-standings-table .cell .drop-down-menu, #team-schedule .cell .drop-down-menu, #week-schedule .cell .drop-down-menu {
+  display: none;
+  position: absolute;
+  margin: 1px 0 0 -2px;
+  min-width: 150px;
+  border: #000 1px solid;
+  border-top: 0px;
+  z-index: 2;
+  background-color: white;
+  overflow: hidden;
+  width: auto;
+  text-align: left;
+  padding: 2px 5px;
+}
+/* line 34, ../../sass/common/_display_table.scss */
+.data-table .cell .drop-down-menu a, #season-standings-table .cell .drop-down-menu a, .week-standings-table .cell .drop-down-menu a, #team-schedule .cell .drop-down-menu a, #week-schedule .cell .drop-down-menu a {
+  color: #324579;
+}
+/* line 40, ../../sass/common/_display_table.scss */
+.data-table .header, #season-standings-table .header, .week-standings-table .header, #team-schedule .header, #week-schedule .header {
+  background-color: #324759;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  height: 24px;
+  border-top: #324759 1px solid;
+}
+/* line 48, ../../sass/common/_display_table.scss */
+.data-table .header a, #season-standings-table .header a, .week-standings-table .header a, #team-schedule .header a, #week-schedule .header a {
+  color: #fff;
+}
+/* line 51, ../../sass/common/_display_table.scss */
+.data-table .header.active, #season-standings-table .header.active, .week-standings-table .header.active, #team-schedule .header.active, #week-schedule .header.active {
+  background-color: #fff;
+  color: #324759;
+  border-bottom: #fff 1px solid;
+  border-top: #324759 1px solid;
+}
+/* line 57, ../../sass/common/_display_table.scss */
+.data-table .header.active a, #season-standings-table .header.active a, .week-standings-table .header.active a, #team-schedule .header.active a, #week-schedule .header.active a {
+  color: #324759;
+}
+
+/* line 65, ../../sass/common/_display_table.scss */
+.display-table {
+  border-collapse: collapse;
+  margin: 0px;
+  padding: 0px;
+  border: #324759 1px solid;
+}
+/* line 70, ../../sass/common/_display_table.scss */
+.display-table thead tr {
+  color: #fff;
+  height: 25px;
+}
+/* line 73, ../../sass/common/_display_table.scss */
+.display-table thead tr th {
+  border-right: #324759 1px solid;
+  border-top: #324759 1px solid;
+  background-color: #324759;
+  color: #fff;
+  padding: 5px 0px;
+  word-wrap: normal;
+  width: 90px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  /* line-height: 24px; */
+}
+/* line 86, ../../sass/common/_display_table.scss */
+.display-table thead tr th.no-bg {
+  background-color: inherit;
+}
+/* line 92, ../../sass/common/_display_table.scss */
+.display-table tbody tr td {
+  border: #324759 1px solid;
+}
+/* line 97, ../../sass/common/_display_table.scss */
+.display-table tr td, .display-table tr th {
+  text-align: center;
+  padding: 5px 5px;
+  font-size: 13px;
+}
+/* line 102, ../../sass/common/_display_table.scss */
+.display-table tr td a, .display-table tr th a {
+  color: #fff;
+  text-decoration: none;
+}
+/* line 106, ../../sass/common/_display_table.scss */
+.display-table tr td a:hover, .display-table tr th a:hover {
+  text-decoration: underline;
+}
+/* line 112, ../../sass/common/_display_table.scss */
+.display-table tr.odd {
+  background-color: #efefef;
+}
+/* line 119, ../../sass/common/_display_table.scss */
+.display-table.natural-width tr th {
+  width: auto;
+}
+/* line 123, ../../sass/common/_display_table.scss */
+.display-table.natural-width tr td, .display-table.natural-width tr th {
+  padding: 4px 15px;
+}
+/* line 128, ../../sass/common/_display_table.scss */
+.display-table .drop-down-menu {
+  background-color: red;
+  display: none;
+  position: absolute;
+  /* bottom: 0px; */
+  /* left: 0px; */
+  width: 150px;
+  border: blue 1px solid;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+/* line 2, ../../sass/common/_div_table.scss */
+.table {
+  display: table;
+  border: #324759 1px solid;
+  border-collapse: collapse;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 8, ../../sass/common/_div_table.scss */
+.table div {
+  display: table-row;
+  /** This is a td. **/
+}
+/* line 11, ../../sass/common/_div_table.scss */
+.table div.even {
+  background-color: #eee;
+}
+/* line 15, ../../sass/common/_div_table.scss */
+.table div.odd {
+  background-color: #d9d9d9;
+}
+/* line 19, ../../sass/common/_div_table.scss */
+.table div.header {
+  background-color: #324759;
+  color: white;
+  font-weight: bold;
+}
+/* line 24, ../../sass/common/_div_table.scss */
+.table div.header a {
+  color: white;
+  font-weight: bold;
+}
+/* line 30, ../../sass/common/_div_table.scss */
+.table div div {
+  display: table-cell;
+  border: #324759 1px solid;
+  padding: 4px 20px;
+  text-align: center;
+}
+/* line 36, ../../sass/common/_div_table.scss */
+.table div div a {
+  color: #324759;
+  text-decoration: underline;
+}
+/* line 40, ../../sass/common/_div_table.scss */
+.table div div a:hover {
+  text-decoration: none;
+}
+/* line 45, ../../sass/common/_div_table.scss */
+.table div div input {
+  width: 75px;
+}
+/* line 49, ../../sass/common/_div_table.scss */
+.table div div.drop-down-container {
+  /* position: relative; */
+}
+/* line 51, ../../sass/common/_div_table.scss */
+.table div div.drop-down-container.active {
+  background-color: #fff;
+  border-bottom: #fff 1px solid;
+}
+/* line 55, ../../sass/common/_div_table.scss */
+.table div div.drop-down-container.active a {
+  color: #324759;
+}
+/* line 61, ../../sass/common/_div_table.scss */
+.table div div .drop-down-menu {
+  display: none;
+  position: absolute;
+  margin-left: -21px;
+  /* counter act padding */
+  margin-top: 4px;
+  border: #324759 1px solid;
+  border-top: 0px;
+  z-index: 2;
+  background-color: #fff;
+  min-width: 150px;
+}
+/* line 73, ../../sass/common/_div_table.scss */
+.table div div .drop-down-menu ul li {
+  margin-bottom: 3px;
+}
+/* line 75, ../../sass/common/_div_table.scss */
+.table div div .drop-down-menu a {
+  color: #324759;
+}
+
+/* line 2, ../../sass/common/_data_table.scss */
+table.data {
+  border-collapse: collapse;
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 11, ../../sass/common/_data_table.scss */
+table.data tr th {
+  background-color: #324759;
+  color: white;
+  font-weight: bold;
+  border: #324759 1px solid;
+}
+/* line 17, ../../sass/common/_data_table.scss */
+table.data tr th.blank {
+  border: 0px;
+  background-color: #fff;
+}
+/* line 22, ../../sass/common/_data_table.scss */
+table.data tr td {
+  border: #324759 1px solid;
+}
+/* line 25, ../../sass/common/_data_table.scss */
+table.data tr td.loss {
+  background-color: #d29d93 !important;
+}
+/* line 29, ../../sass/common/_data_table.scss */
+table.data tr td.win {
+  background-color: #a8baae !important;
+}
+/* line 33, ../../sass/common/_data_table.scss */
+table.data tr td.tie, table.data tr td.push {
+  background-color: #999999 !important;
+}
+/* line 38, ../../sass/common/_data_table.scss */
+table.data tr th, table.data tr td {
+  padding: 4px 20px;
+  text-align: center;
+}
+/* line 43, ../../sass/common/_data_table.scss */
+table.data tr.even td {
+  background-color: #d9d9d9;
+}
+/* line 47, ../../sass/common/_data_table.scss */
+table.data tr.odd td {
+  background-color: #eee;
+}
+
+/* These are all bad, and should be rewritten somewhere else,
+or made into compass modules for other parts to reuse */
+/* line 257, ../../sass/desktop.scss */
+#season-standings-table {
+  width: 970px;
+}
+/* line 261, ../../sass/desktop.scss */
+#season-standings-table .cell {
+  width: 90px;
+}
+
+/* line 269, ../../sass/desktop.scss */
+.week-standings-table .cell {
+  width: 98px;
+}
+/* line 272, ../../sass/desktop.scss */
+.week-standings-table .cell .drop-down-menu {
+  width: 250px;
+}
+/* line 277, ../../sass/desktop.scss */
+.week-standings-table .cell:first-child {
+  width: 72px;
+}
+
+/* line 282, ../../sass/desktop.scss */
+#team-schedule {
+  width: 840px;
+  margin: 15px auto;
+}
+/* line 286, ../../sass/desktop.scss */
+#team-schedule .cell {
+  width: 140px;
+}
+/* line 289, ../../sass/desktop.scss */
+#team-schedule .cell.colspan-5 {
+  width: 700px;
+}
+
+/* line 295, ../../sass/desktop.scss */
+#week-schedule {
+  width: 700px;
+  margin: 15px auto;
+}
+/* line 299, ../../sass/desktop.scss */
+#week-schedule .cell {
+  width: 140px;
+}
+
+/* line 304, ../../sass/desktop.scss */
+#overlay-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  visibility: visible;
+  /* background-color: #efefef; */
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+/* line 314, ../../sass/desktop.scss */
+#overlay-container div.shadow {
+  background-color: #999;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+}
+/* line 320, ../../sass/desktop.scss */
+#overlay-container div.content {
+  background-color: #fff;
+  margin: 100px auto;
+  width: 700px;
+  opacity: 1;
+  min-height: 400px;
+  box-shadow: 5px;
+  -webkit-box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+  -moz-box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+  box-shadow: #333333 0 0 25px, #999999 0 0 0px 1px inset;
+}
+
+/* line 1, ../../sass/pages/_change_password.scss */
+label {
+  display: inline-block;
+  width: 150px;
+}

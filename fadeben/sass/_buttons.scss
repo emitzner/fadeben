@@ -1,0 +1,36 @@
+@mixin clean-gray {
+    /* @include linear-gradient(top, #eee, #ccc); */
+    /* @include background(linear-gradient(top, #eee, #CCC)); */
+    background-color: $MAIN-COLOR;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #bbb;
+    border-radius: 3px;
+    color: $AUX-COLOR;
+    font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    padding: 8px 0;
+    text-align: center;
+    /* text-shadow: 0 1px 0 #eee; */
+    width: 150px;
+
+    &:hover {
+	/* @include linear-gradient(top, #ddd, #bbb); */
+	border: 1px solid #bbb;
+	border-bottom: 1px solid #999;
+	cursor: pointer;
+	/* text-shadow: 0 1px 0 #ddd; */
+    }
+
+    &:active {
+	border: 1px solid #aaa;
+	border-bottom: 1px solid #888;
+	@include box-shadow(inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee);
+    }
+}
+
+button.clean-gray {
+    @include clean-gray;
+}
+
+input[type='submit'] {
+    @include clean-gray;
+}

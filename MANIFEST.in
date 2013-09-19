@@ -1,0 +1,3 @@
+include fadeben/config/deployment.ini_tmpl
+recursive-include fadeben/public *
+recursive-include fadeben/templates *

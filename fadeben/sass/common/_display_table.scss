@@ -1,0 +1,140 @@
+.data-table {
+    display: table;
+    border-right: #324759 1px solid;
+    margin-top: 15px;
+
+    div.odd {
+	background-color: #efefef;
+    }
+
+    .cell {
+	display: table-cell;
+	border-color: #324759;
+	border-style: solid;
+	border-width: 0 0 1px 1px;
+	text-align: center;
+	line-height: 24px;
+	height: 24px;
+	position: relative;
+	
+	.drop-down-menu {
+	    display: none;
+	    position: absolute;
+	    margin: 1px 0 0 -2px;
+	    min-width: 150px;
+	    border: #000 1px solid;
+	    border-top: 0px;
+	    z-index: 2;
+	    background-color: white;
+	    overflow: hidden;
+	    width: auto;
+	    text-align: left;
+	    padding: 2px 5px;
+	    
+	    a {
+		color: #324579;
+	    }
+	}
+    }	
+    
+    .header {
+	background-color: #324759;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	height: 24px;
+	border-top: #324759 1px solid;
+
+	a {
+	    color: #fff;
+	}
+	&.active {
+	    background-color: #fff;
+	    color: #324759;
+	    border-bottom: #fff 1px solid;
+	    border-top: #324759 1px solid;
+	    
+	    a {
+		color: #324759;
+	    }
+	}
+
+    }
+}
+
+.display-table {
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    border: #324759 1px solid;
+    thead tr {
+	color: #fff;
+	height: 25px;
+	th {
+	    border-right: #324759 1px solid;
+	    border-top: #324759 1px solid;
+	    background-color: #324759;
+	    color: #fff;
+	    padding: 5px 0px;
+	    word-wrap: normal;
+	    width: 90px;
+	    text-align: center;
+   	    font-size: 12px;
+	    font-weight: bold;
+	    /* line-height: 24px; */
+	    
+	    &.no-bg {
+		background-color: inherit;
+	    }
+	}
+    }
+
+    tbody tr td {
+	border: #324759 1px solid;
+    }
+
+    tr {
+	td, th {
+	    text-align: center;
+	    padding: 5px 5px;
+	    font-size: 13px;
+
+	    a {
+		color: #fff;
+		text-decoration: none;
+
+		&:hover {
+		    text-decoration: underline;
+		}
+	    }
+	}
+
+        &.odd {
+            background-color: #efefef;
+        }
+    }
+
+
+    &.natural-width tr {
+        th {
+            width: auto;
+        }
+        
+        td, th {
+            padding: 4px 15px;
+        }
+    }
+
+    .drop-down-menu {
+	background-color: red;
+	display: none;
+	position: absolute;
+	/* bottom: 0px; */
+	/* left: 0px; */
+	width: 150px;
+	border: blue 1px solid;
+	z-index: 1;
+	margin-top: 10px;
+    }
+
+}
