@@ -33,5 +33,6 @@ class Globals(object):
             })
 
         self.current_season = int(config.get('fadeben.current_season'))
+        self.cookie_secret = config.get('beaker.session.secret')
 
         self.serverconfig = ServerConfig()

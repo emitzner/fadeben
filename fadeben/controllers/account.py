@@ -3,7 +3,7 @@ import formencode
 import formencode.htmlfill
 import urllib
 
-from pylons import request, response, session, tmpl_context as c, url
+from pylons import request, response, session, tmpl_context as c, url, app_globals as g
 from pylons.controllers.util import abort, redirect
 from fadeben.lib import helpers as h
 
@@ -91,7 +91,15 @@ class AccountController(BaseController):
         session['user_id'] = user.id
         session.save()
 
-        log.info("User {0} has logged in.".format(user.username))
+        if form_result['remember_me']:
+            log.debug("User has opted to stay signed in")
+            remember_value = api.account.generate_remember_me_value(username=user.username, secret=g.cookie_secret)
+
+            response.set_cookie('remember_me', remember_value, max_age=1209600)
+
+        log.info(
+            "User {0} has logged in with remember me value of {1}.".format(user.username, form_result['remember_me'])
+        )
 
         if 'next' in request.GET:
             log.debug("yup")
@@ -102,8 +110,16 @@ class AccountController(BaseController):
         return redirect(next)
 
     def logout(self):
+        if not c.user:
+            redirect(url("homepage"))
+
+        username = c.user.username
         session.invalidate()
         session.save()
+        response.delete_cookie("remember_me")
+
+        log.info("User {0} has been logged out".format(username))
+
         return redirect(url('homepage'))
 
     def forgot_password(self):

@@ -19,6 +19,8 @@ from mako.exceptions import TopLevelLookupException
 from fadeben.model.meta import Session
 from fadeben.model import User
 
+from fadeben import api
+
 log = logging.getLogger(__name__)
 
 def is_mobile(user_agent):
@@ -61,6 +63,18 @@ class BaseController(WSGIController):
         if 'user_id' in session:
             # find the user
             c.user = Session.query(User).filter(User.id==session['user_id']).first()
+        elif 'remember_me' in request.cookies:
+            # They've got a remember me cookie, lets grab their info
+            username = api.account.get_username_from_hashed_value(
+                value=request.cookies['remember_me'],
+                secret=g.cookie_secret
+            )
+            log.debug("Username back from cookie: {0}".format(username))
+            if username:
+                c.user = Session.query(User).filter(User.username==username).first()
+            else:
+                c.user = None
+                
         else:
             # If they aren't at the login screen, redirect them there.
             c.user = None

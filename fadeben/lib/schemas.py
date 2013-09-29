@@ -7,6 +7,7 @@ class BaseSchema(formencode.Schema):
 class LoginSchema(BaseSchema):
     username = formencode.validators.String(not_empty=True)
     password = formencode.validators.String(not_empty=True)
+    remember_me = formencode.validators.StringBool(if_missing=False)
 
 class ChangePasswordSchema(BaseSchema):
     old_password = formencode.validators.String(not_empty=True)

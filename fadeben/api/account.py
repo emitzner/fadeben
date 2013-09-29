@@ -1,3 +1,5 @@
+import hashlib
+
 from fadeben.lib.util import create_random_string, generate_password
 from fadeben.model import Session, User
 from pylons import app_globals as g, url
@@ -40,3 +42,29 @@ def reset_password(**params):
 
     # Email user
     g.mailer.message(user.email, subject, content)
+
+def generate_remember_me_value(**params):
+    username = params['username']
+    secret = params['secret']
+
+    ss = hashlib.sha256()
+    ss.update(secret)
+    ss.update(username)
+    hashed_value = ss.hexdigest()
+    return "{0}{1}".format(hashed_value, username)
+
+def get_username_from_hashed_value(**params):
+    hashed_value = params['value']
+    username = hashed_value[64:]
+    secret = params['secret']
+    c = generate_remember_me_value(
+        username=username,
+        secret=secret
+    )[:64]
+
+    if hashed_value[:64] != c:
+        return None
+    else:
+        return username
+
+    

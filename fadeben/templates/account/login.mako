@@ -9,6 +9,8 @@
 		${ h.text('username') }<br>
 		<label for="password">Password:</label>
 		${ h.password('password') }<br>
+		<label for="remember_me">Stay signed in?</label>
+		${ h.checkbox("remember_me", checked=True) }<br>
 	</fieldset>
 	${ h.submit('login_submit', 'Login') }
 	${ h.end_form() }

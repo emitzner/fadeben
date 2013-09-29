@@ -16,6 +16,11 @@
     </label>
     ${ h.password('password', placeholder='Password') }
 
+    <label for="remember_me">
+	Stay signed in?
+    </label>
+    ${ h.checkbox("remember_me", checked=True) }
+
     <button type="submit" data-theme="a">Login</button>
 
     ${ h.end_form() }
