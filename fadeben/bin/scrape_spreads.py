@@ -151,7 +151,11 @@ def run_it():
     log.info("{0} games in progress.  Checking for scores".format(len(games)))
     
     # We've got games to check for, let's go parse the covers site
-    game_map = scrape_spreads()
+    try:
+        game_map = scrape_spreads()
+    except socket.timeout:
+        log.error("Socket timeout when trying to scrape covers site.  Exiting")
+        return
 
     log.info("Got game map back from parsed covers site: {0}".format(game_map))
     
