@@ -31,9 +31,9 @@ def calculate(**params):
     for i in xrange(weeks_completed, 0, -1):
         winner = [members[0].id ]
         for m in members[1:]:
-            if pick_map[m.id][i] > pick_map[winner[0]][i]:
+            if pick_map[m.id].get(i, 0) > pick_map[winner[0]].get(i, 0):
                 winner = [m.id]
-            elif pick_map[m.id][i] == pick_map[winner[0]][i]:
+            elif pick_map[m.id].get(i, 0) == pick_map[winner[0]].get(i, 0):
                 winner.append(m.id)
 
         if len(winner) > 1:
