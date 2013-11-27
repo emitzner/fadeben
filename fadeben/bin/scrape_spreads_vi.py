@@ -2,17 +2,13 @@
 If there's games going on right now, lets try and see if they're over by grabbing the scores from NFL's site
 """
 import sys
-import datetime
 import logging
 import os
 import urllib2
-import pytz
 
 from bs4 import BeautifulSoup
 
-from fadeben.lib.script import bootstrap
 from fadeben import api
-from fadeben.lib import dt
 
 from fadeben.model import Session, Team
 
@@ -184,12 +180,8 @@ def scrape_spreads():
         counter += 1
         
 
-    #Session.commit()
+    Session.commit()
     log.info("Updated {0} games with their spreads".format(counter))
-
-    
-        
-        
 
 if __name__ == '__main__':
     import fadeben.lib.bootstrap
