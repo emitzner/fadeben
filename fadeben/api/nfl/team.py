@@ -51,7 +51,7 @@ def get_record(**params):
     
     record = [0, 0, 0]
     for game in games:
-        if not game.finished():
+        if game is None or not game.finished():
             continue
 
         home_score = game.home_score
@@ -99,17 +99,15 @@ def get_games(**params):
     games = api_game.list(season=season_id, team=team_id)
 
     normalized = []
-    game_week = 1
+    game_week = 0
 
     for game in games:
-        log.debug("game week: {0}, game_week: {1}".format(game.week, game_week))
-        if game.week == game_week:
-            normalized.append(game)
-        else:
-            log.debug("Skipping week!")
+        if game.week != game_week+1:
             normalized.append(None)
-            game_week += 1
-        game_week += 1
+
+        normalized.append(game)
+
+        game_week = game.week
 
     return normalized
         

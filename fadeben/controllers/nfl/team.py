@@ -22,10 +22,10 @@ class TeamController(BaseController):
         c.team = api.nfl.team.find(team_abbr=abbr)
 
         # Get their games this season, too.
-        c.games = api.nfl.game.list(
-            season=c.current_season.number,
-            team=c.team.id
-            )
+        c.games = api.nfl.team.get_games(
+            season_id=c.current_season.number,
+            team_id=c.team.id
+        )
 
         c.record = api.nfl.team.get_record(team_id=c.team.id, games=c.games)
         c.record_ats = api.nfl.team.get_record(team_id=c.team.id, games=c.games, ats=True)
