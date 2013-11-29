@@ -27,7 +27,7 @@
 			</td>
 			<td>${ h.show_spread(game.spread) }</td>
 			<td>
-				% if game.finished():
+				% if game.is_finished():
 				${ game.away_score } ${ game.away_team.abbr } - ${ game.home_team.abbr } ${ game.home_score }
 				% else:
 				-

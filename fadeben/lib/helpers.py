@@ -75,7 +75,7 @@ def show_spread(spread):
     return ("{0:.1f}".format(spread) if spread is not None else '-')
 
 def game_result_class(team, game, ats=False):
-    if not game.finished():
+    if not game.is_finished():
         return ''
 
     winner = game.winner(ats)

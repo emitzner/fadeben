@@ -51,7 +51,7 @@ def get_record(**params):
     
     record = [0, 0, 0]
     for game in games:
-        if game is None or not game.finished():
+        if game is None or not game.is_finished():
             continue
 
         home_score = game.home_score

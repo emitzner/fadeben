@@ -29,7 +29,7 @@ class ScheduleController(BaseController):
 
         c.week_completed = True
         for game in c.games:
-            if not game.finished():
+            if not game.is_finished():
                 c.week_completed = False
                 break
         

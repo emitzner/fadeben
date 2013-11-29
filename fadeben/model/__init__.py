@@ -79,8 +79,12 @@ class Game(Base):
     home_team = relationship(Team, primaryjoin=home_team_id == Team.id)
     away_team = relationship(Team, primaryjoin=away_team_id == Team.id)
 
-    def finished(self):
+    def is_finished(self):
         return (not (self.home_score is None))
+        
+    def finished(self):
+        """This is deprecated.  Please use is_finished()"""
+        return self.is_finished()
 
     def short_display(self):
         return "{0} @ {1}".format(self.away_team.abbr, self.home_team.abbr)

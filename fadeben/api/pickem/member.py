@@ -1,5 +1,4 @@
 import logging
-import datetime
 
 from pylons import tmpl_context as c, app_globals as g
 from pylons.templating import render_mako as render
