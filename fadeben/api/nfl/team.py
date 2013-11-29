@@ -4,7 +4,7 @@ from sqlalchemy.orm import joinedload
 from unstdlib.standard import get_many
 from pylons import config
 
-from fadeben.model import Session, Team, Game
+from fadeben.model import Session, Team, Game, Season
 
 from fadeben.api.nfl import game as api_game
 
@@ -85,3 +85,31 @@ def get_record_by_team(**params):
         record_map[team_id] = get_record(team_id=team_id)
 
     return record_map
+
+def get_games(**params):
+    """
+    Returns a list of games for the team for the season provided.
+    Will have a null entry for the bye week.
+    """
+    team_id, season_id = get_many(params, ['team_id', 'season_id'])
+
+    # Get the season so that we can do some parsing
+    season = Session.query(Season).filter(Season.number==season_id).one()
+
+    games = api_game.list(season=season_id, team=team_id)
+
+    normalized = []
+    game_week = 1
+
+    for game in games:
+        log.debug("game week: {0}, game_week: {1}".format(game.week, game_week))
+        if game.week == game_week:
+            normalized.append(game)
+        else:
+            log.debug("Skipping week!")
+            normalized.append(None)
+            game_week += 1
+        game_week += 1
+
+    return normalized
+        
