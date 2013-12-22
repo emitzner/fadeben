@@ -39,6 +39,7 @@ class UpdateGameSchema(BaseSchema):
     home_score = formencode.validators.Int(if_empty=None)
     away_score = formencode.validators.Int(if_empty=None)
     spread = formencode.validators.Number(if_empty=None)
+    game_time = formencode.validators.Int(not_empty=True)
    
 class PredictionSchema(BaseSchema):
     prediction = formencode.validators.StringBool(not_empty=True)

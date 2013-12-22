@@ -1,11 +1,13 @@
 import logging
 import datetime
+import pytz
 
 from sqlalchemy.orm import joinedload
 from sqlalchemy import or_
 from unstdlib.standard import get_many
 
 from fadeben.model import Session, Season, Game
+from fadeben.lib import dt
 
 log = logging.getLogger(__name__)
 
@@ -114,8 +116,8 @@ def update(**params):
     This is to simplify just updating the scores
     and spreads of a game
     """
-    game_id, home_score, away_score, spread = \
-        get_many(params, ['game_id'], ['home_score', 'away_score', 'spread'])
+    game_id, home_score, away_score, spread, game_time = \
+        get_many(params, ['game_id'], ['home_score', 'away_score', 'spread', 'game_time'])
 
     game = Session.query(Game).filter(Game.id==game_id).one()
 
@@ -124,6 +126,33 @@ def update(**params):
 
     if spread is not None:
         game.spread = spread
+
+    if game_time:
+        # We need to check the game time now.  This is most likely due to
+        # flex scheduling.  The parameter comes in as seconds after midnight
+        # for the original date (changing the day is not supported right now),
+        # in EST.  We need to add the seconds to the original day in EST, then
+        # convert the adjusted time to UTC and save it.
+        log.info("Updating game time for game {0}".format(game.short_display()))
+        game_time_local = game.game_time_l
+        beginning_of_day = datetime.datetime(
+            game_time_local.year,
+            game_time_local.month,
+            game_time_local.day,
+            0,
+            0,
+            0,
+            0,
+            game_time_local.tzinfo
+        )
+
+        delta = datetime.timedelta(seconds=game_time)
+
+        new_time_local = beginning_of_day + delta
+
+        log.info("new game time local: {0}".format(new_time_local))
+        new_time_utc = dt.utcfromlocal(new_time_local, pytz.timezone('America/New_York'))
+        game.game_time = new_time_utc
 
     Session.add(game)
     Session.commit()

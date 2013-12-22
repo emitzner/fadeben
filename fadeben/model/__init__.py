@@ -117,6 +117,15 @@ class Game(Base):
         else:
             return None
 
+    def get_game_start_time_in_seconds(self):
+        q = 0
+        gtl = self.game_time_l
+        q += (gtl.hour * 3600)
+        q += (gtl.minute * 60)
+        q += (gtl.second)
+
+        return q
+
 class Prediction(Base):
     __tablename__ = 'pickem_predictions'
     __table_args__ = ( UniqueConstraint('user_id', 'game_id'), )

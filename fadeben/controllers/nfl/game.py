@@ -98,6 +98,7 @@ class GameController(BaseController):
                 'home_score': request.params.get('game-{0}-home-score'.format(game.id)),
                 'away_score': request.params.get('game-{0}-away-score'.format(game.id)),
                 'spread': request.params.get('game-{0}-spread'.format(game.id)),
+                'game_time': request.params.get('game-{0}-gametime'.format(game.id)),
                 }
             
             game_params = schema.to_python(game_params, c)
