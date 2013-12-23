@@ -20,10 +20,10 @@ log = logging.getLogger(__name__)
 class AccountController(BaseController):
 
     def login(self):
-        if request.method == 'GET':
-            self._handle_login_get()
-        else:
+        if request.method == 'POST':
             self._handle_login_post()
+        else:
+            self._handle_login_get()
 
         return render('/account/login.mako')
 
