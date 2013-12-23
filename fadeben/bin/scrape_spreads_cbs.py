@@ -15,7 +15,7 @@ from fadeben.model import Session, Team
 
 from pylons import app_globals as g
 
-log = logging.getLogger("fadeben.spread_scraper_vi")
+log = logging.getLogger("fadeben.spread_scraper_cbs")
 
 TEAM_MAP = {
     "Bills": "BUF",
