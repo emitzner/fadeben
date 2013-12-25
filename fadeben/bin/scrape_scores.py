@@ -2,7 +2,6 @@
 If there's games going on right now, lets try and see if they're over by grabbing the scores from NFL's site
 """
 import sys
-import datetime
 import logging
 import os
 import urllib2
@@ -34,8 +33,6 @@ def parse_scores():
 
     data = json.loads(raw_data)
 
-    time_now = datetime.datetime.utcnow()
-
     # Step 3: go through each game and see if the game is over on the nfl site.
     for game in games:
         # find this game in the
@@ -56,17 +53,7 @@ def parse_scores():
     # step 5: profit!
     log.info("Done scraping for scores.")
 
-def main():
-    if len(sys.argv) > 1:
-        config_file = sys.argv[1]
-    else:
-        config_file = 'development.ini'
-
-    proj_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-    bootstrap(config_file, proj_dir)
-    parse_scores()
-
 if __name__ == '__main__':
-    main()
+    import fadeben.lib.bootstrap
+    parse_scores()
 
