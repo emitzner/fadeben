@@ -55,8 +55,16 @@ def remind_users():
             )
 
         if not unpredicted_games:
-            log.info("User {0} has no unpredicted games for this time period of {1}-{2}".format(user.id, start_date, end_date))
+            log.info(
+                "User {0} has no unpredicted games for this time period of {1}-{2}".format(
+                    user.id, start_date, end_date
+                )
+            )
             continue
+
+        log.info(
+            "Sending user {0} a reminder email for {1} games".format(user.id, len(unpredicted_games))
+        )
 
         api.pickem.member.send_reminder(
             user_id=user.id,
