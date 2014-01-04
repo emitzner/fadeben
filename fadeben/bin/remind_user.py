@@ -72,17 +72,8 @@ def remind_users():
 
     return
 
-def main():
-    if len(sys.argv) > 1:
-        config_file = sys.argv[1]
-    else:
-        config_file = 'development.ini'
-
-    proj_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-    bootstrap(config_file, proj_dir)
+if __name__ == '__main__':
+    import fadeben.lib.bootstrap
     remind_users()
 
-if __name__ == '__main__':
-    main()
 
