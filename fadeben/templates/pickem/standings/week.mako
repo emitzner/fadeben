@@ -5,10 +5,16 @@
          chunks = [c.games[:8], c.games[8:]]
     %>
     <div class="left sidebar">
-        <h3>Week ${ c.week }</h3>
+        <h3>
+            % if c.playoff_view:
+            Playoffs
+            % else:
+            Week ${ c.week }
+            % endif
+        </h3>
         <ul>
-            % for m in c.week_standings:
-            <li>${ m.first_name }: ${ c.pick_map.get(m.id, 0) }</li>
+            % for ws in c.week_standings:
+            <li>${ ws.user.first_name }: ${ ws.correct }</li>
             % endfor
         </ul>
         <h3>Overall</h3>
@@ -21,9 +27,18 @@
 
     <div class="sidebar-pad">
         <div class="sub-header" style="overflow: hidden;">
-            <h1 class="left">Standings - Week ${ c.week }</h1>
+            
+            <h1 class="left">
+                % if c.playoff_view:
+                Standings - Playoffs
+                % else:
+                Standings - ${ h.week_name(c.season, c.week) }
+                % endif
+            </h1>
             % if not c.week_completed:
-                ${ h.link_to("Make predictions", url("prediction_season_week", season_id=c.season_num, week=c.week), class_="button right", id="make-predictions")}
+                ${ h.link_to(
+                    "Make predictions",
+                    url("prediction_season_week", season_id=c.season.number, week=c.prediction_week), class_="button right", id="make-predictions")}
             % else:
                 <span class="right completed">completed</span>
             % endif
@@ -49,6 +64,7 @@
                 </div>
                 % endfor
             </div>
+
             % for member in c.members:
             <div>
                 <div class="cell">${ member.first_name }</div>
@@ -63,11 +79,9 @@
     </div>
 </div>
 
-% if c.interactive_picks:
-${ h.javascript_link('/js/bootstrap/pickem/standings/week.js') }
-% else:
+
 ${ h.javascript_link('/js/bootstrap/pickem/standings/season.js') }
-% endif
+
 <%def name="show_prediction(user, game, prediction)">
 <div class="cell ${ h.prediction_result_class(user, game, prediction) }">
     ${ h.show_prediction(user, game, prediction) }

@@ -47,6 +47,12 @@ class Season(Base):
     def num_total_weeks(self):
         return self.num_weeks + self.num_post_weeks
 
+    def is_playoff_week(self, week):
+        if week > self.num_total_weeks:
+            raise ValueError("Week {0} is greater than the total number of weeks")
+
+        return (week > self.num_weeks)
+
 class Team(Base):
     __tablename__ = 'nfl_teams'
 

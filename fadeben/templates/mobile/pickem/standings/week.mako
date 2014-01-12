@@ -27,12 +27,3 @@
         % endfor
     </div>
 % endfor
-
-<%def name="header_text()">
-<a href="${ url('week_standings', season=c.season_num, week=c.week-1) }" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse">prev</a>
-Week ${ c.week } standings
-<a href="${ url('week_standings', season=c.season_num, week=c.week+1) }" data-role="button" data-icon="arrow-r" data-iconpos="notext">next</a>
-</%def>
-
-<%def name="show_prediction(user, game, prediction)">
-</%def>

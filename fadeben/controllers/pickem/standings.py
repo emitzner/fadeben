@@ -6,7 +6,9 @@ from pylons.controllers.util import abort, redirect
 from fadeben.lib.base import BaseController, render
 from fadeben import api
 
-from fadeben.model import Session, User
+from fadeben.model import Session, User, Season
+
+from fadeben.api.nfl.season import Season as SeasonLib
 
 log = logging.getLogger(__name__)
 
@@ -80,29 +82,37 @@ class StandingsController(BaseController):
     def week(self, season, week):
         """Display the standings for a particular week"""
 
+        c.season = Session.query(Season).get(season)
+        season_lib = SeasonLib(c.season)
+
+        c.current_week = season_lib.get_current_week()
+
         # HACK: Fix before enabling
         grouped_playoff_enabled = g.serverconfig.is_enabled('grouped_playoff')
 
-        if grouped_playoff_enabled and int(week) > 17:
-            log.debug("yo banana {0}".format(week))
+        if grouped_playoff_enabled and week == 'playoffs':
+            c.playoff_view = True
             c.games = api.nfl.game.list(season=season, playoffs=True)
+            c.week = c.current_week
         else:
-            log.debug("Not grouping playoff games")
+            try:
+                c.week = int(week)
+            except ValueError as e:
+                abort(404)
+
+            c.playoff_view = False
             c.games = api.nfl.game.list(season=season, week=week)
 
+        if c.playoff_view:
+            # playoffs week is only completed when the entire season is over
+            c.week_completed = season_lib.has_season_finished()
+            c.prediction_week = c.current_week
+        else:
+            c.week_completed = season_lib.is_week_finished(week)
+            c.prediction_week = week
+            
         c.members = api.pickem.member.list(season=season)
-        c.week = int(week)
-        c.season_num = season
-
-        c.week_completed = True
-
-        c.interactive_picks = g.serverconfig.is_enabled('interactive_picks')
-        # is the week completed?
-        for game in c.games:
-            if not game.finished():
-                c.week_completed = False
-                break
-            log.debug("game {0} is finished, {1}".format(game.id, game.home_score == ''))
+        c.display_week = week
 
         c.map = api.pickem.prediction.list_by_user(
             season=season,
@@ -113,26 +123,25 @@ class StandingsController(BaseController):
         c.season_map = api.pickem.prediction.count_user_picks_raw(
             season=season,
             user_ids=[x.id for x in c.members],
+        )
+
+        if c.playoff_view:
+            c.week_standings = api.pickem.prediction.get_pick_count(
+                c.season,
+                c.members,
+                [18, 19, 20, 21]
+            )
+        else:
+            c.week_standings = api.pickem.prediction.get_pick_count(
+                c.season,
+                c.members,
+                [c.week]
             )
 
-        log.debug("season map count: {0}".format(c.season_map))
-
-        c.pick_map = api.pickem.prediction.count_user_picks_raw(
-            season=season,
-            user_ids=[x.id for x in c.members],
-            week=c.week)
-
-        c.week_standings = sorted(c.members,
-                                  key=lambda x: c.pick_map.get(x.id, 0),
-                                  reverse=True)
-
-        c.overall_standings = sorted(c.members,
-                                  key=lambda x: c.season_map.get(x.id, 0),
-                                  reverse=True)
-
-
-        log.debug("pick map: {0}".format(c.pick_map))
-
-        log.debug("map: {0}".format(c.map))
+        c.overall_standings = sorted(
+            c.members,
+            key=lambda x: c.season_map.get(x.id, 0),
+            reverse=True
+        )
         
         return render('/pickem/standings/week.mako')

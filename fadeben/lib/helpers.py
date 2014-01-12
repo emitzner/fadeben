@@ -116,7 +116,17 @@ def get_num_picks_for_week(pick_map, season, member, week):
     return pick_map.get(member.id, {}).get(week, 0)
 
 def week_name(season, week):
-    return "Week {0}".format(week)
+    if week <= season.num_weeks:
+        return "Week {0}".format(week)
+    else:
+        if week == 18:
+            return "Wild Card Round"
+        elif week == 19:
+            return "Divisional Round"
+        elif week == 20:
+            return "Conference Title"
+        else:
+            return "Super Bowl"
 
 def show_money(amount):
     if amount < 0:

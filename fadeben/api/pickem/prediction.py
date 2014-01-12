@@ -1,10 +1,10 @@
 import logging
 import datetime
 
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 
 from sqlalchemy.orm import joinedload
-from sqlalchemy import or_, func, and_
+from sqlalchemy import or_, func, and_, desc
 from unstdlib.standard import get_many
 
 from fadeben.model import Session, Season, Prediction, Game, User
@@ -268,8 +268,69 @@ def find_unpredicted(**params):
             missing.append(game)
 
     return missing
-    
 
+def get_pick_count(season, users, weeks):
+    if isinstance(weeks, int):
+        weeks = [weeks]
+
+    user_map = {}
+    user_ids = []
+
+    for user in users:
+        user_map[user.id] = user
+        user_ids.append(user.id)
+
+    q = Session.query(
+        User.id,
+        func.count(Prediction.user_id).label('correct_picks')
+    )
+    q = q.outerjoin(Prediction, User.id == Prediction.user_id)
+    q = q.filter(User.id.in_(user_ids))
+    q = q.join(Game, Prediction.game_id==Game.id)
+    q = q.filter(Game.season_num==season.number)
+    q = q.filter(Game.home_score!=None)
+
+    q = q.filter(Game.week.in_(weeks))
+
+    # Check for correct predictions
+    correct_away = and_(Game.home_score + Game.spread <= Game.away_score, Prediction.prediction==False)
+    correct_home = and_(Game.home_score + Game.spread >= Game.away_score, Prediction.prediction==True)
+    correct_combined = or_(correct_away, correct_home)
+    q = q.filter(correct_combined)
+    q = q.group_by(User.id)
+    q = q.order_by('correct_picks DESC')
+    q = q.order_by(User.name)
+    results = q.all()
+
+    # Go through the results and format it for the call site.
+    # results array has a list of tuples with (user_id, count)
+    # format.
+
+    tuple_result = namedtuple('Scoring', ['user', 'correct'])
+
+    ret = []
+    for result in results:
+        ret.append(
+            tuple_result(user_map[result[0]], result[1])
+        )
+
+    # I can't figure out why the LEFT OUTER JOIN isn't preserving
+    # all the users when they got no picks correct.  Thus,
+    # I'm doing a manual scan because this isn't going to break
+    # the server.
+    for user_id in user_ids:
+        found = False
+        for v in ret:
+            if v.user.id == user_id:
+                found = True
+                break
+
+        if not found:
+            ret.append(
+                tuple_result(user_map[user_id], 0)
+            )
+
+    return ret
 
 def _build_count_query(season, user_ids, week=None):
     """This can be built off of"""

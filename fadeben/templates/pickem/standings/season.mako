@@ -14,13 +14,13 @@
 		class_="sub-menu-launcher") }
 		<div class="drop-down-menu">
 		    <ul>
-				% for i in xrange(group['start'] + 1, group['end']+1):
-				<li>
-					${ h.link_to(h.week_name(c.season, i),
-                    url("week_standings", season=c.season.number, week=i))
-					}
-				</li>
-				% endfor
+			% for i in xrange(group['start'] + 1, group['end']+1):
+			<li>
+			    ${ h.link_to(h.week_name(c.season, i),
+                            url("week_standings", season=c.season.number, week=i))
+			    }
+			</li>
+			% endfor
 		    </ul>
 		</div>
 	    </div>
@@ -28,9 +28,17 @@
 
 	    % for week in xrange(c.group_end+1, c.min_weeks_to_show+1):
 	    <div>
-			${ h.link_to(h.week_name(c.season, week),
-			url("week_standings", season=c.season.number, week=week)) 
-			}
+                % if h.g.serverconfig.is_enabled('grouped_playoff') and c.season.is_playoff_week(week):
+		${ h.link_to("Playoffs",
+                    url("playoff_standings", season=c.season.number)
+                )
+		}
+                    
+                % else:
+		${ h.link_to(h.week_name(c.season, week),
+		    url("week_standings", season=c.season.number, week=week)) 
+		}
+                % endif
 	    </div>
 	    % endfor
 	    <div>Total</div>

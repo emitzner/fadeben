@@ -15,8 +15,18 @@
     </tr>
 </table>
 
-% for week in xrange(c.min_weeks_to_show-1, 0, -1):
-<h3><a href="${ url('week_standings', season=c.season.number, week=week) }">Week ${ week }</a></h3>
+% for week in xrange(c.min_weeks_to_show, 0, -1):
+<h3>
+    % if h.g.serverconfig.is_enabled('grouped_playoff') and c.season.is_playoff_week(week):
+    <a href="${ url('playoff_standings', season=c.season.number) }">
+        Playoffs
+    </a>
+    % else:
+    <a href="${ url('week_standings', season=c.season.number, week=week) }">
+        Week ${ week }
+    </a>
+    % endif
+</h3>
 <table class="spaced-table">
     <tr>
         % for member in c.members:

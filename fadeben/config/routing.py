@@ -128,6 +128,10 @@ def make_map(config):
     map.connect("week_standings", "/pickem/standings/{season}/{week}",
                 controller="pickem/standings", action="week")
 
+    # This is used for the aggregate playoff viewing
+    map.connect("playoff_standings", "/pickem/standings/{season}/playoffs",
+                controller="pickem/standings", action="playoffs")
+
     map.connect("earnings", "/pickem/earnings/{season_id}",
                 controller="pickem/earnings", action="index")
 
