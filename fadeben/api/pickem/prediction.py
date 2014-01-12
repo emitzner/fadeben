@@ -236,7 +236,7 @@ def count_user_week(**params):
 
         # Now, for the playoff weeks, we nee to aggregate.
         playoff_count = 0
-        for i in xrange(season.num_weeks+1, completed_weeks+1):
+        for i in xrange(season.num_weeks+1, 22):
             playoff_count += raw_map[user_id].get(i, 0)
 
         grouped_map[ user_id ][ season.num_weeks+1 ] = playoff_count
